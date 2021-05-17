@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 
 const {
-  NODE_ENV, PORT, production, development,
+  NODE_ENV, PORT, MONGODBURLPROD, MONGODBURLDEV,
 } = process.env;
 
 const app = express();
@@ -22,7 +22,7 @@ const { limiter } = require('./utils/limiter');
 app.use(limiter);
 app.use(cors());
 // -------------------MongoDB-------------------------
-mongoose.connect(NODE_ENV === 'production' ? production : development, {
+mongoose.connect(NODE_ENV === 'production' ? MONGODBURLPROD : MONGODBURLDEV, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
