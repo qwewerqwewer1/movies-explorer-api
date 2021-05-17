@@ -1,5 +1,12 @@
-# Front-end domain - https://dmitriykovyazin_portfolio.nomoredomains.icu
+# Front-end domain
 
-# Back-end domain - https://api.dmitriykovyazin.nomoredomains.icu
+https://dmitriykovyazin_portfolio.nomoredomains.icu
+в разаботке на данный момент...
 
-# Public ip - 84.252.136.157
+# Back-end domain
+
+https://api.dmitriykovyazin.nomoredomains.icu
+
+# Public ip
+
+84.252.143.107
