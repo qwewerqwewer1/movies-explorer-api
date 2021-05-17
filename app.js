@@ -6,7 +6,7 @@ const {
 } = process.env;
 
 const app = express();
-
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
@@ -20,7 +20,7 @@ const { validateSignIn, validateSignUp } = require('./middlewares/validations');
 const { limiter } = require('./utils/limiter');
 
 app.use(limiter);
-
+app.use(cors());
 // -------------------MongoDB-------------------------
 mongoose.connect(NODE_ENV === 'production' ? production : development, {
   useNewUrlParser: true,

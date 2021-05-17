@@ -1,3 +1,5 @@
-# movies-explorer-api
+# Front-end domain - https://dmitriykovyazin_portfolio.nomoredomains.icu
 
-# npx eslint app.js
+# Back-end domain - https://api.dmitriykovyazin.nomoredomains.icu
+
+# Public ip - 84.252.136.157
