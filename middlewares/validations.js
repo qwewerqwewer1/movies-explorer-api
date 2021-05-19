@@ -38,19 +38,10 @@ module.exports.validatePatchUser = celebrate({
 
 //                                            *Роуты после получения доступа Movie
 
-module.exports.validateGetMovies = celebrate({
-  headers: Joi.object().keys({
-    'content-type': Joi.string().valid('application/json').required(),
-  }).unknown(),
-});
-
 module.exports.validateGetMovieById = celebrate({
   params: Joi.object().keys({
     movieId: Joi.string().hex().length(24),
   }),
-  headers: Joi.object().keys({
-    'content-type': Joi.string().valid('application/json').required(),
-  }).unknown(),
 });
 
 module.exports.validatePostMovie = celebrate({
