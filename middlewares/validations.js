@@ -6,7 +6,6 @@ const validator = require('validator');
 module.exports.validateSignIn = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    name: Joi.string().required().min(2).max(30),
     password: Joi.string().required(),
   }),
 });
@@ -24,7 +23,6 @@ module.exports.validateSignUp = celebrate({
 module.exports.validateGetUser = celebrate({
   headers: Joi.object().keys({
     'content-type': Joi.string().valid('application/json').required(),
-    authorization: Joi.string().max(200).required(),
   }).unknown(),
 });
 
@@ -35,7 +33,6 @@ module.exports.validatePatchUser = celebrate({
   }),
   headers: Joi.object().keys({
     'content-type': Joi.string().valid('application/json').required(),
-    authorization: Joi.string().max(200).required(),
   }).unknown(),
 });
 
@@ -44,7 +41,6 @@ module.exports.validatePatchUser = celebrate({
 module.exports.validateGetMovies = celebrate({
   headers: Joi.object().keys({
     'content-type': Joi.string().valid('application/json').required(),
-    authorization: Joi.string().max(200).required(),
   }).unknown(),
 });
 
@@ -54,7 +50,6 @@ module.exports.validateGetMovieById = celebrate({
   }),
   headers: Joi.object().keys({
     'content-type': Joi.string().valid('application/json').required(),
-    authorization: Joi.string().max(200).required(),
   }).unknown(),
 });
 
@@ -85,10 +80,9 @@ module.exports.validatePostMovie = celebrate({
     }),
     movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
-    nameEn: Joi.string().required(),
+    nameEN: Joi.string().required(),
   }),
   headers: Joi.object().keys({
     'content-type': Joi.string().valid('application/json').required(),
-    authorization: Joi.string().max(200).required(),
   }).unknown(),
 });

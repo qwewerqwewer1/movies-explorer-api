@@ -31,6 +31,8 @@ module.exports.patchUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === ('ValidationError' || 'CastError')) {
         next(new BadRequestError('Переданы невалидные данные'));
+      } else if (err.name === 'MongoError' && err.code === 11000) {
+        next(new ConflictError('Пользователь с таким email уже существует'));
       } else {
         next(err);
       }

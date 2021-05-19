@@ -16,11 +16,10 @@ module.exports.getMovieById = (req, res, next) => {
     .orFail(new NotFoundError('Фильм с указанным _id не найден.'))
     .then((dataMovie) => {
       if (dataMovie.owner._id.toString() === req.user._id) {
-        dataMovie.delete();
-        res.status(200).send({ message: 'Фильм удален!' });
-      } else {
-        throw new Forbidden('Отказано в доступе, нет прав.');
+        return dataMovie.delete()
+          .then(() => res.status(200).send({ message: 'Фильм удален!' }));
       }
+      throw new Forbidden('Отказано в доступе, нет прав.');
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -43,7 +42,7 @@ module.exports.postMovie = (req, res, next) => {
     thumbnail,
     movieId,
     nameRU,
-    nameEn,
+    nameEN,
   } = req.body;
 
   MovieSchema.create({
@@ -58,7 +57,7 @@ module.exports.postMovie = (req, res, next) => {
     owner: req.user._id,
     movieId,
     nameRU,
-    nameEn,
+    nameEN,
   })
     .then((dataCard) => res.send(dataCard))
     .catch((err) => {
