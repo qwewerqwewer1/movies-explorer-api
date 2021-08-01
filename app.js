@@ -19,7 +19,20 @@ app.use(requestLogger); // winston
 
 app.use(limiter);
 
-app.use(cors());
+const options = {
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://dmitriykovyazin_portfolio.nomoredomains.icu',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept'],
+  credentials: true,
+};
+
+app.use(cors(options));
 // -------------------MongoDB-------------------------
 mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGODBURLPRODUCTION : MONGODBURLDEV, {
   useNewUrlParser: true,
