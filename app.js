@@ -9,13 +9,14 @@ const helmet = require('helmet');
 const { errors } = require('celebrate');
 const router = require('./routes');
 const { errorHandler } = require('./middlewares/error-handler');
+// eslint-disable-next-line no-unused-vars
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { limiter } = require('./utils/limiter');
 const {
   MONGODBURLDEV, PORTDEV,
 } = require('./utils/config');
 
-app.use(requestLogger); // winston
+// app.use(requestLogger); // winston
 
 app.use(limiter);
 
