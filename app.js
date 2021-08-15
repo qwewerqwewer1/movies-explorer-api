@@ -20,7 +20,7 @@ const {
 
 app.use(limiter);
 
-const options = {
+app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:3001',
@@ -31,9 +31,7 @@ const options = {
   optionsSuccessStatus: 204,
   allowedHeaders: ['Content-Type', 'origin', 'Authorization', 'Accept'],
   credentials: true,
-};
-
-app.use(cors(options));
+}));
 // -------------------MongoDB-------------------------
 mongoose.connect(process.env.NODE_ENV === 'production' ? process.env.MONGODBURLPRODUCTION : MONGODBURLDEV, {
   useNewUrlParser: true,
